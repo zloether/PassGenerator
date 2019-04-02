@@ -77,14 +77,14 @@ def generate(length=32, upper=True, lower=True, numbers=True, special=True):
 # -----------------------------------------------------------------------------
 # Configure argument parser
 # -----------------------------------------------------------------------------
-def parse_arguments():
+def __parse_arguments():
     # create parser object
     parser = argparse.ArgumentParser(description='Generates secure random ' + \
                                     'passwords')
     
     # setup argument to store length
     parser.add_argument('length', nargs='?', default=32,
-                        action='store', help='number of characters of length')
+                        action='store', help='number of characters in length (default=32)')
 
     # setup arugment to explicitly enable upper characters
     parser.add_argument('-l', '--lower-enable', dest='lower', default=True,
@@ -128,8 +128,8 @@ def parse_arguments():
 # -----------------------------------------------------------------------------
 # Run main
 # -----------------------------------------------------------------------------
-def run_main():
-    args = parse_arguments()
+def __run_main():
+    args = __parse_arguments()
 
     if not args.upper and not args.lower and not args.numbers and not args.special:
         print('You have disabled all supported character sets. You must enable ' + \
@@ -152,4 +152,4 @@ def run_main():
 # Run interactively
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    run_main()
+    __run_main()
