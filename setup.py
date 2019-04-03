@@ -6,10 +6,10 @@ def read(fname):
 
 setup(
     name = "passgenerator",
-    version = "1.0.post2",
+    version = "1.0.1",
     author = "Zackary Loether",
     author_email = "zloether@gmail.com",
-    description = ("A secure password generator with a CLI utility."),
+    description = ("A secure password generator with a CLI utility"),
     license = "MIT",
     keywords = "password generator",
     url = "https://github.com/zloether/passgenerator",
