@@ -9,7 +9,7 @@ setup(
     version = "1.0.post2",
     author = "Zackary Loether",
     author_email = "zloether@gmail.com",
-    description = ("A secure password generator. It can be imported or run by itself."),
+    description = ("A secure password generator with a CLI utility."),
     license = "MIT",
     keywords = "password generator",
     url = "https://github.com/zloether/passgenerator",
