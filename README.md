@@ -1,40 +1,49 @@
 # passgenerator
-[![Python](https://img.shields.io/badge/python-v3.4+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/pypi/pyversions/passgenerator.svg)](https://www.python.org/)
 [![Build Status](https://travis-ci.org/zloether/passgenerator.svg?branch=master)](https://travis-ci.org/zloether/passgenerator)
 [![Issues](https://img.shields.io/github/issues/zloether/passgenerator.svg)](https://github.com/zloether/passgenerator/issues)
 [![License](https://img.shields.io/github/license/zloether/passgenerator.svg)](https://opensource.org/licenses/MIT)
 
-`passgenerator` is a secure password generator written in Python. It can be imported or run by itself.
+`passgenerator` is a secure password generator with a CLI utility.
 
 ## Table of Contents
-- [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Standalone](#standalone)
-    - [Importing](#importing)
+    - [Command Line Utility](#command-line-utility)
 - [License](#license)
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine.
-
 ## Prerequisites
-You'll need to have Python installed in order to run `passgenerator`. Start by downloading and installing the latest version of [Python 3](https://www.python.org/downloads/).
-> *Note: `passgenerator` has not been tested with Python 2 and may not work without changing some things.*
+You'll need to have Python installed in order to run `passgenerator`. Start by downloading and installing the [Python](https://www.python.org/downloads/).
+> *Note: Python 3 is recommended, however `passgenerator` has been successfully tested with Python 2.6+*
 
 
 ## Installation
-Download the latest version from GitHub using Git.
 ```
-git clone https://github.com/zloether/passgenerator.git
+pip install passgenerator
 ```
-This will create a directory called *passgenerator* and all the code will be in it.
 
 ## Usage
-### Standalone
+`passgenerator` provides a single method:
 ```
-python passgenerator.py --help
-usage: passgenerator.py [-h] [-l] [-L] [-n] [-N] [-s] [-S] [-u] [-U] [length]
+generate(length=32, upper=True, lower=True, numbers=True, special=True)
+```
+
+Sample code:
+```
+>>> import passgenerator
+>>> passgenerator.generate()
+'qq*6opDb45;o~;6jWy4U-A5V.*cbHp1Z'
+>>> passgenerator.generate(14, numbers=False)
+"N'VJXGQ'Sj)Cj-"
+```
+
+
+### Command Line Utility
+`passgenerator` includes a command line utility for generating passwords.
+```
+passgenerator --help
+usage: passgenerator [-h] [-l] [-L] [-n] [-N] [-s] [-S] [-u] [-U] [length]
 
 Generates secure random passwords
 
@@ -54,31 +63,20 @@ optional arguments:
   -U, --upper-disable   don't use upper case characters
 ```
 
-Generating a default password
+Generating a default password:
 ```
 python passgenerator.py
 zT0Q9tyfcAx.S2d8*pXGxen86ipSL_;E
 ```
 
-Generating a 14 character password with no special characters
+Generating a 14 character password with no special characters:
 ```
 python passgenerator.py -S 14
 pocUvtR0RyZ9jd
 ```
-### Importing
-`passgenerator` can also be imported into another Python script. It only provides a single method:
-```
-generate(length=32, upper=True, lower=True, numbers=True, special=True)
-```
 
-Sample code:
-```
->>> import passgenerator
->>> passgenerator.generate()
-'qq*6opDb45;o~;6jWy4U-A5V.*cbHp1Z'
-```
 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License
