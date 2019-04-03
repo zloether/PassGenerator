@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "passgenerator",
-    version = "1.0.1",
+    version = "1.0.2",
     author = "Zackary Loether",
     author_email = "zloether@gmail.com",
     description = ("A secure password generator with a CLI utility"),
