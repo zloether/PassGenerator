@@ -14,7 +14,7 @@
 - [License](#license)
 
 ## Prerequisites
-You'll need to have Python installed in order to run `passgenerator`. Start by downloading and installing the [Python](https://www.python.org/downloads/).
+You'll need to have Python installed in order to run `passgenerator`. Start by downloading and installing [Python](https://www.python.org/downloads/).
 > *Note: Python 3 is recommended, however `passgenerator` has been successfully tested with Python 2.6+*
 
 
@@ -65,13 +65,13 @@ optional arguments:
 
 Generating a default password:
 ```
-python passgenerator.py
+passgenerator
 zT0Q9tyfcAx.S2d8*pXGxen86ipSL_;E
 ```
 
 Generating a 14 character password with no special characters:
 ```
-python passgenerator.py -S 14
+passgenerator -S 14
 pocUvtR0RyZ9jd
 ```
 
