@@ -1,10 +1,10 @@
-# passgenerator
+# PassGenerator
 [![Python](https://img.shields.io/pypi/pyversions/passgenerator.svg)](https://www.python.org/)
 [![Build Status](https://travis-ci.org/zloether/passgenerator.svg?branch=master)](https://travis-ci.org/zloether/passgenerator)
 [![Issues](https://img.shields.io/github/issues/zloether/passgenerator.svg)](https://github.com/zloether/passgenerator/issues)
 [![License](https://img.shields.io/github/license/zloether/passgenerator.svg)](https://opensource.org/licenses/MIT)
 
-`passgenerator` is a secure password generator with a CLI utility.
+`PassGenerator` is a secure password generator with a CLI utility.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -14,8 +14,8 @@
 - [License](#license)
 
 ## Prerequisites
-You'll need to have Python installed in order to run `passgenerator`. Start by downloading and installing [Python](https://www.python.org/downloads/).
-> *Note: Python 3 is recommended, however `passgenerator` has been successfully tested with Python 2.6+*
+You'll need to have Python installed in order to run `PassGenerator`. Start by downloading and installing [Python](https://www.python.org/downloads/).
+> *Note: Python 3 is recommended, however `PassGenerator` has been successfully tested with Python 2.6+*
 
 
 ## Installation
@@ -24,9 +24,9 @@ pip install passgenerator
 ```
 
 ## Usage
-`passgenerator` provides a single method:
+`PassGenerator` provides a single method:
 ```
-generate(length=32, upper=True, lower=True, numbers=True, special=True)
+passgenerator.generate(length=32, upper=True, lower=True, numbers=True, special=True)
 ```
 
 Sample code:
@@ -40,7 +40,7 @@ Sample code:
 
 
 ### Command Line Utility
-`passgenerator` includes a command line utility for generating passwords.
+`PassGenerator` includes a command line utility for generating passwords.
 ```
 passgenerator --help
 usage: passgenerator [-h] [-l] [-L] [-n] [-N] [-s] [-S] [-u] [-U] [length]
