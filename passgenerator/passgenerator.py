@@ -144,8 +144,8 @@ def __parse_arguments():
                         action='store_false', help="don't use number characters")
     
     # setup argument for phoenetic password
-    parser.add_argument('-p', '-phoenetic', dest='phoenetic', default=False,
-                        action='store_true', help='create phoenetic password using dictionary (default=4 words')
+    parser.add_argument('-p', '--phoenetic', dest='phoenetic', default=False,
+                        action='store_true', help='create phoenetic password using English words (default=4 words)')
 
     # setup arugment to explicitly enable upper characters
     parser.add_argument('-s', '--special-enable', dest='special', default=True,
