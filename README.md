@@ -1,6 +1,6 @@
 # PassGenerator
 [![Python](https://img.shields.io/pypi/pyversions/passgenerator.svg)](https://www.python.org/)
-[![Build Status](https://travis-ci.org/zloether/passgenerator.svg?branch=master)](https://travis-ci.org/zloether/passgenerator)
+[![Build Status](https://travis-ci.org/zloether/PassGenerator.svg?branch=master)](https://travis-ci.org/zloether/PassGenerator)
 [![Issues](https://img.shields.io/github/issues/zloether/passgenerator.svg)](https://github.com/zloether/passgenerator/issues)
 [![License](https://img.shields.io/github/license/zloether/passgenerator.svg)](https://opensource.org/licenses/MIT)
 
