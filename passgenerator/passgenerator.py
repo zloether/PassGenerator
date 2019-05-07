@@ -14,6 +14,7 @@
 # -----------------------------------------------------------------------------
 from random import SystemRandom
 import argparse
+import os.path
 
 
 # -----------------------------------------------------------------------------
@@ -23,10 +24,13 @@ upper_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lowers_chars = 'abcdefghijklmnopqrstuvwxyz'
 number_chars = '0123456789'
 special_chars = "-._~()'!*:@,;"
+bundled_dictionary = os.path.abspath(os.path.join(os.path.dirname(__file__), 'dictionary/words_english_6_char_plus.txt'))
+default_phoenetic_length = 4
+
 
 
 # -----------------------------------------------------------------------------
-# generate password
+# generate gibberish password
 # -----------------------------------------------------------------------------
 def generate(length=32, upper=True, lower=True, numbers=True, special=True):
     alphabet = ''
@@ -75,6 +79,43 @@ def generate(length=32, upper=True, lower=True, numbers=True, special=True):
 
 
 # -----------------------------------------------------------------------------
+# generate phoenetic password
+# -----------------------------------------------------------------------------
+def phoenetic(number_words=4):
+    words = [] # list to hold words
+
+    # read dictionary file
+    with open(bundled_dictionary, 'r') as f: # opens the file
+        for line in f: # read file line by line
+            words.append(line.strip()) # add each line to words list
+    
+    plist = [] # list to hold words in password
+    rand = SystemRandom() # create Random object
+
+    i = 0 # create iterator
+    while i < number_words:
+        r = rand.randrange(0, len(words)) # get random list index
+
+        # make sure we haven't already picked that word
+        if any(words[r] in p for p in plist):
+            break
+
+        plist.append(words[r]) # add word to password list
+        i += 1 # iterate
+    
+    password_spaces = '' # create empty password with spaces for readability
+    password = '' # create empty password
+
+    # concatenate all the words together
+    for i in plist:
+        password_spaces = password_spaces + i + ' '
+        password = password + i
+
+    return password_spaces, password
+
+
+
+# -----------------------------------------------------------------------------
 # Configure argument parser
 # -----------------------------------------------------------------------------
 def __parse_arguments():
@@ -101,6 +142,10 @@ def __parse_arguments():
     # setup arugment to explicitly enable number characters
     parser.add_argument('-N', '--number-disable', dest='numbers', default=None,
                         action='store_false', help="don't use number characters")
+    
+    # setup argument for phoenetic password
+    parser.add_argument('-p', '-phoenetic', dest='phoenetic', default=False,
+                        action='store_true', help='create phoenetic password using dictionary (default=4 words')
 
     # setup arugment to explicitly enable upper characters
     parser.add_argument('-s', '--special-enable', dest='special', default=True,
@@ -130,6 +175,18 @@ def __parse_arguments():
 # -----------------------------------------------------------------------------
 def __run_main():
     args = __parse_arguments()
+
+    if args.phoenetic:
+        #if args.length:
+        #    password = phoenetic(args.length)
+        #else:
+        #    password = phoenetic(default_phoenetic_length)
+        password_spaces, password = phoenetic(default_phoenetic_length)
+        print(password_spaces)
+        print(password)
+        exit()
+        
+
 
     if not args.upper and not args.lower and not args.numbers and not args.special:
         print('You have disabled all supported character sets. You must enable ' + \
