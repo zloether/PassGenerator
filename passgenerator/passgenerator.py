@@ -123,10 +123,16 @@ def phoenetic(number_words=4, word_list=bundled_dictionary):
     password_spaces = '' # create empty password with spaces for readability
     password = '' # create empty password
 
+    
     # concatenate all the words together
-    for i in plist:
-        password_spaces = password_spaces + i + ' '
-        password = password + i
+    i = 0 # create iterator
+    while i < len(plist): # loop through plist
+        password_spaces = password_spaces + plist[i]
+        if not i == len(plist)-1:
+            password_spaces = password_spaces + ' '
+        password = password + plist[i]
+        i += 1
+
 
     return password_spaces, password
 
