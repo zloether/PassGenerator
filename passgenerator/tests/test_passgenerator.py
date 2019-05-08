@@ -35,3 +35,20 @@ def test_generate():
         if c in special_chars:
             assert False
     assert True
+
+
+def test_phoenetic():
+    password_spaces, password = passgenerator.phoenetic()
+    assert len(password) >= 24
+    assert len(password_spaces) == len(password) + 4
+
+    test_word_list = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test_word_list.txt')
+
+    password_spaces, password = passgenerator.phoenetic(word_list=test_word_list)
+    assert len(password) >= 24
+    assert len(password_spaces) == len(password) + 4
+
+    length = 6
+    password_spaces, password = passgenerator.phoenetic(number_words=length)
+    assert len(password) >= 36
+    assert len(password_spaces) == len(password) + length
