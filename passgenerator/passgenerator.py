@@ -213,7 +213,11 @@ def __run_main():
             except ValueError:
                 print('Error: Input length "'+ args.length + '"is not a valid number')
                 exit()
-        password_spaces, password = phoenetic(number_words=length, word_list=args.word_list)
+        if args.word_list == None:
+            word_list = bundled_dictionary
+        else:
+            word_list = args.word_list
+        password_spaces, password = phoenetic(number_words=length, word_list=word_list)
         print(password_spaces)
         print(password)
         exit()
