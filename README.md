@@ -56,7 +56,7 @@ Generates secure random passwords
 
 positional arguments:
   length                length of password (default is 32 characters for
-                        gibberish and 4 words for phoenetic)
+                        complex and 4 words for phoenetic)
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -89,6 +89,19 @@ passgenerator -S 14
 pocUvtR0RyZ9jd
 ```
 
+Generating a phoenetic password
+```
+passgenerator -p
+taurocol pandiabolism alkalinuria enfeeblish
+taurocolpandiabolismalkalinuriaenfeeblish
+```
+
+Generating a phoenetic password using 3 words
+```
+passgenerator -p 3
+overdevotedly evanesces perceivers
+overdevotedlyevanescesperceivers
+```
 
 
 ## License

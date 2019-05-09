@@ -26,7 +26,7 @@ number_chars = '0123456789'
 special_chars = "-._~()'!*:@,;"
 bundled_dictionary = os.path.abspath(os.path.join(os.path.dirname(__file__), 'dictionary/words_english_6_char_plus.txt'))
 default_phoenetic_length = 4
-default_gibberish_length = 32
+default_complex_length = 32
 
 
 
@@ -42,12 +42,12 @@ optional argument '-w/--word-list' assumes '-p/--phoenetic'
 '''
 
 help_length_description = '''
-length of password (default is 32 characters for gibberish and 4 words for phoenetic)
+length of password (default is 32 characters for complex and 4 words for phoenetic)
 '''
 
 
 # -----------------------------------------------------------------------------
-# generate gibberish password
+# generate complex password
 # -----------------------------------------------------------------------------
 def generate(length=32, upper=True, lower=True, numbers=True, special=True):
     alphabet = ''
@@ -230,7 +230,7 @@ def __run_main():
         exit()
     
     if args.length == None:
-        length = default_gibberish_length
+        length = default_complex_length
     else:
         try:
             length = int(args.length)
