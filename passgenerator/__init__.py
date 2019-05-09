@@ -1,3 +1,3 @@
-from .passgenerator import generate
+from .passgenerator import generate, phoenetic
 
-__all__ = 'generate'
+__all__ = ['generate', 'phoenetic']
