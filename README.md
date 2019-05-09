@@ -4,7 +4,7 @@
 [![Issues](https://img.shields.io/github/issues/zloether/passgenerator.svg)](https://github.com/zloether/passgenerator/issues)
 [![License](https://img.shields.io/github/license/zloether/passgenerator.svg)](https://opensource.org/licenses/MIT)
 
-`PassGenerator` is a secure password generator with a CLI utility.
+`PassGenerator` is a secure password generator with a CLI utility. It can generate random complex or phoenetic passwords.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -39,8 +39,8 @@ Sample code:
 "N'VJXGQ'Sj)Cj-"
 >>> passgenerator.phoenetic()
 ('calliper delaying shrunken crednerite', 'calliperdelayingshrunkencrednerite')
->>> passgenerator.phoenetic(6)
-('airproofs octohedral cryptopyic parabled supervigorous laparomyomotomy', 'airproofsoctohedralcryptopyicparabledsupervigorouslaparomyomotomy')
+>>> passgenerator.phoenetic(3)
+('nonsensitization psittacinite floruits', 'nonsensitizationpsittacinitefloruits')
 ```
 
 
@@ -77,13 +77,13 @@ optional arguments:
 optional argument '-w/--word-list' assumes '-p/--phoenetic'
 ```
 
-Generating a default password:
+Generating a default complex password:
 ```
 passgenerator
 zT0Q9tyfcAx.S2d8*pXGxen86ipSL_;E
 ```
 
-Generating a 14 character password with no special characters:
+Generating a 14 character complex password with no special characters:
 ```
 passgenerator -S 14
 pocUvtR0RyZ9jd
