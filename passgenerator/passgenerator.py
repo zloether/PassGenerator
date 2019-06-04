@@ -45,7 +45,14 @@ help_length_description = '''
 length of password (default is 32 characters for complex and 4 words for phoenetic)
 '''
 
+# -----------------------------------------------------------------------------
+# alternate method name for generating random complex password
+# -----------------------------------------------------------------------------
+def complexpass(length=32, upper=True, lower=True, numbers=True, special=True):
+    return generate(length=length, upper=upper, lower=lower, numbers=numbers, special=special)
 
+
+    
 # -----------------------------------------------------------------------------
 # generate complex password
 # -----------------------------------------------------------------------------

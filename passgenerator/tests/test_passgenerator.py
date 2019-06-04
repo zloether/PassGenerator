@@ -7,6 +7,15 @@ import passgenerator
 
 
 
+def test_complexpass():
+    output = passgenerator.complexpass()
+    assert len(output) == 32
+
+    output = passgenerator.complexpass(length=24)
+    assert len(output) == 24
+
+
+
 def test_generate():
     password_23 = passgenerator.generate(23)
     assert len(password_23) == 23
