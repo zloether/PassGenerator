@@ -27,8 +27,10 @@ pip install passgenerator
 `PassGenerator` provides the following methods:
 ```
 passgenerator.generate(length=32, upper=True, lower=True, numbers=True, special=True)
+passgenerator.complexpass(length=32, upper=True, lower=True, numbers=True, special=True)
 passgenerator.phoenetic(number_words=4, word_list='path/to/list')
 ```
+> *Note: The `complexpass` method calls the `generate` method - both methods provide identical output
 
 Sample code:
 ```
