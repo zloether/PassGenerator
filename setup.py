@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "passgenerator",
-    version = "1.0.3",
+    version = "1.0.4",
     author = "Zackary Loether",
     author_email = "zloether@gmail.com",
     description = ("A secure password generator with a CLI utility"),
@@ -14,6 +14,7 @@ setup(
     keywords = "password generator",
     url = "https://github.com/zloether/PassGenerator",
     packages=["passgenerator"],
+    include_package_data=True,
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     classifiers=[
