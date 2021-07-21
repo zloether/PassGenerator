@@ -20,7 +20,7 @@ You'll need to have Python installed in order to run `PassGenerator`. Start by d
 
 ## Installation
 ```
-pip install passgenerator
+python -m pip install passgenerator
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ pip install passgenerator
 ```
 passgenerator.generate(length=32, upper=True, lower=True, numbers=True, special=True)
 passgenerator.complexpass(length=32, upper=True, lower=True, numbers=True, special=True)
-passgenerator.phoenetic(number_words=4, word_list='path/to/list')
+passgenerator.phoenetic(number_words=4, word_list='path/to/list', delimiter='-')
 ```
 > *Note: The `complexpass` method calls the `generate` method - both methods provide identical output
 
@@ -40,9 +40,9 @@ Sample code:
 >>> passgenerator.generate(14, numbers=False)
 "N'VJXGQ'Sj)Cj-"
 >>> passgenerator.phoenetic()
-('calliper delaying shrunken crednerite', 'calliperdelayingshrunkencrednerite')
+'endocondensation-chevance-electroless-quadrifurcation'
 >>> passgenerator.phoenetic(3)
-('nonsensitization psittacinite floruits', 'nonsensitizationpsittacinitefloruits')
+'inducibility-beheira-onoclea'
 ```
 
 
@@ -50,18 +50,19 @@ Sample code:
 `PassGenerator` includes a command line utility for generating passwords.
 ```
 passgenerator --help
-usage: passgenerator.py [-h] [-l] [-L] [-n] [-N] [-p] [-s] [-S] [-u] [-U]
-                        [-w <word list>]
+usage: passgenerator.py [-h] [-d [delimiter]] [-D] [-l] [-L] [-n] [-N] [-p] [-s] [-S] [-u] [-U] [-w <word list>]
                         [length]
 
 Generates secure random passwords
 
 positional arguments:
-  length                length of password (default is 32 characters for
-                        complex and 4 words for phoenetic)
+  length                length of password (default is 32 characters for complex and 4 words for phoenetic)
 
 optional arguments:
   -h, --help            show this help message and exit
+  -d [delimiter], --delimiter [delimiter]
+                        delimiter between words in phoenetic password
+  -D, --no-delimiter    no delimiter between words in phoenetic password
   -l, --lower-enable    use lower case characters
   -L, --lower-disable   don't use lower case characters
   -n, --number-enable   use number characters
@@ -73,8 +74,7 @@ optional arguments:
   -u, --upper-enable    use upper case characters
   -U, --upper-disable   don't use upper case characters
   -w <word list>, --word-list <word list>
-                        use provided word list (plaintext format, return
-                        seperated
+                        use provided word list (plaintext format, return seperated
 
 optional argument '-w/--word-list' assumes '-p/--phoenetic'
 ```
@@ -94,15 +94,13 @@ pocUvtR0RyZ9jd
 Generating a phoenetic password
 ```
 passgenerator -p
-taurocol pandiabolism alkalinuria enfeeblish
-taurocolpandiabolismalkalinuriaenfeeblish
+taurocol-pandiabolism-alkalinuria-enfeeblish
 ```
 
-Generating a phoenetic password using 3 words
+Generating a phoenetic password using 3 words and a dot as a delimiter
 ```
-passgenerator -p 3
-overdevotedly evanesces perceivers
-overdevotedlyevanescesperceivers
+passgenerator -p 3 -d .
+overdevotedly.evanesces.perceivers
 ```
 
 
