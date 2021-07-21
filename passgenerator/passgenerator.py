@@ -105,7 +105,7 @@ def generate(length=32, upper=True, lower=True, numbers=True, special=True):
 # -----------------------------------------------------------------------------
 # generate phoenetic password
 # -----------------------------------------------------------------------------
-def phoenetic(number_words=4, word_list=bundled_dictionary):
+def phoenetic(number_words=4, word_list=bundled_dictionary, delimiter='-'):
     words = [] # list to hold words
 
     # read dictionary file
@@ -113,7 +113,7 @@ def phoenetic(number_words=4, word_list=bundled_dictionary):
         for line in f: # read file line by line
             words.append(line.strip()) # add each line to words list
     
-    plist = [] # list to hold words in password
+    password_list = [] # list to hold words in password
     rand = SystemRandom() # create Random object
 
     i = 0 # create iterator
@@ -121,27 +121,15 @@ def phoenetic(number_words=4, word_list=bundled_dictionary):
         r = rand.randrange(0, len(words)) # get random list index
 
         # make sure we haven't already picked that word
-        if any(words[r] in p for p in plist):
+        if any(words[r] in p for p in password_list):
             continue
 
-        plist.append(words[r]) # add word to password list
+        password_list.append(words[r]) # add word to password list
         i += 1 # iterate
     
-    password_spaces = '' # create empty password with spaces for readability
-    password = '' # create empty password
-
+    password = delimiter.join(password_list) # create password with delimiter for readability
     
-    # concatenate all the words together
-    i = 0 # create iterator
-    while i < len(plist): # loop through plist
-        password_spaces = password_spaces + plist[i]
-        if not i == len(plist)-1:
-            password_spaces = password_spaces + ' '
-        password = password + plist[i]
-        i += 1
-
-
-    return password_spaces, password
+    return password
 
 
 
@@ -155,6 +143,15 @@ def __parse_arguments():
     # setup argument to store length
     parser.add_argument('length', nargs='?', default=None,
                         action='store', help=help_length_description)
+    
+    # setup argument to store length
+    parser.add_argument('-d', '--delimiter', nargs='?', default='-',
+                        metavar='delimiter', action='store',
+                        help='delimiter between words in phoenetic password')
+
+    # setup arugment to explicitly enable upper characters
+    parser.add_argument('-D', '--no-delimiter', dest='delimiter', default=False,
+                        action='store_false', help="no delimiter between words in phoenetic password")
 
     # setup arugment to explicitly enable upper characters
     parser.add_argument('-l', '--lower-enable', dest='lower', default=True,
@@ -212,6 +209,11 @@ def __run_main():
     args = __parse_arguments()
 
     if args.phoenetic or args.word_list:
+        if args.delimiter:
+            delimiter = args.delimiter
+        else:
+            delimiter = ''
+    
         if args.length == None:
             length = default_phoenetic_length
         else:
@@ -224,8 +226,7 @@ def __run_main():
             word_list = bundled_dictionary
         else:
             word_list = args.word_list
-        password_spaces, password = phoenetic(number_words=length, word_list=word_list)
-        print(password_spaces)
+        password = phoenetic(number_words=length, word_list=word_list, delimiter=delimiter)
         print(password)
         exit()
         
