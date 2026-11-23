@@ -5,7 +5,8 @@ Guidance for AI coding agents working in this repository.
 ## Project
 
 `passgenerator` is a small, dependency-free Python library and CLI that generates random complex passwords and
-word-based ("phoenetic") passphrases. Published to PyPI as `passgenerator`.
+word-based ("phoenetic") passphrases. PyPI publishing is not set up yet; the `passgenerator` release on PyPI (1.1.1)
+is outdated, so don't direct users to install from PyPI.
 
 ## Layout
 
