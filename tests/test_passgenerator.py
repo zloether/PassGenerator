@@ -61,6 +61,12 @@ def test_generate_all_charsets_disabled_raises():
         passgenerator.generate(upper=False, lower=False, numbers=False, special=False)
 
 
+def test_generate_accepts_truthy_flags():
+    password = passgenerator.generate(8, upper='yes', lower=1, numbers=0, special='')
+    assert len(password) == 8
+    assert not any(c in pg.number_chars + pg.special_chars for c in password)
+
+
 @pytest.mark.parametrize('length', [-1, 0, 3])
 def test_generate_length_too_short_raises(length):
     # 4 charsets enabled, so fewer than 4 characters can never satisfy them all
@@ -112,10 +118,21 @@ def test_phoenetic_too_many_words_raises(tmp_path):
         passgenerator.phoenetic(3, word_list=_word_file(tmp_path, 'alpha', 'beta'))
 
 
+def test_phoenetic_strips_utf8_bom(tmp_path):
+    path = tmp_path / 'bom.txt'
+    path.write_bytes('﻿alpha\nbeta\n'.encode())
+    assert sorted(passgenerator.phoenetic(2, word_list=str(path)).split('-')) == ['alpha', 'beta']
+
+
 @pytest.mark.parametrize('number_words', [-1, 0])
 def test_phoenetic_non_positive_raises(number_words):
     with pytest.raises(ValueError):
         passgenerator.phoenetic(number_words)
+
+
+def test_phoenetic_non_positive_checked_before_reading_file():
+    with pytest.raises(ValueError):
+        passgenerator.phoenetic(0, word_list='/nonexistent/words.txt')
 
 
 # -----------------------------------------------------------------------------
@@ -154,6 +171,7 @@ def test_cli_word_list_implies_phoenetic(monkeypatch, capsys):
     ['-L', '-U', '-N', '-S'],
     ['2'],
     ['-w', '/nonexistent/words.txt'],
+    ['-w', ''],
 ])
 def test_cli_errors_exit_nonzero(monkeypatch, capsys, argv):
     with pytest.raises(SystemExit) as exc:

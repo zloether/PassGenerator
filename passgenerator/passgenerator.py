@@ -71,7 +71,7 @@ def generate(length=32, upper=True, lower=True, numbers=True, special=True):
 
     if not alphabet:
         raise ValueError('at least one character set must be enabled')
-    if length < sum((upper, lower, numbers, special)):
+    if length < sum(map(bool, (upper, lower, numbers, special))):
         raise ValueError('length must be at least the number of enabled character sets')
 
     rand = SystemRandom()
@@ -112,11 +112,12 @@ def generate(length=32, upper=True, lower=True, numbers=True, special=True):
 # generate phoenetic password
 # -----------------------------------------------------------------------------
 def phoenetic(number_words=4, word_list=bundled_dictionary, delimiter='-'):
-    with open(word_list, encoding='utf-8') as f:
-        words = list(dict.fromkeys(line.strip() for line in f if line.strip()))
-
     if number_words < 1:
         raise ValueError('number_words must be at least 1')
+
+    with open(word_list, encoding='utf-8-sig') as f:
+        words = list(dict.fromkeys(filter(None, map(str.strip, f))))
+
     if number_words > len(words):
         raise ValueError(f'word list has only {len(words)} unique words')
 
@@ -200,10 +201,10 @@ def __run_main():
     args = __parse_arguments()
 
     try:
-        if args.phoenetic or args.word_list:
+        if args.phoenetic or args.word_list is not None:
             password = phoenetic(
                 number_words=default_phoenetic_length if args.length is None else args.length,
-                word_list=args.word_list or bundled_dictionary,
+                word_list=bundled_dictionary if args.word_list is None else args.word_list,
                 delimiter=args.delimiter or '')
         else:
             password = generate(
