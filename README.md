@@ -1,8 +1,4 @@
 # PassGenerator
-[![Python](https://img.shields.io/pypi/pyversions/passgenerator.svg)](https://www.python.org/)
-[![CI](https://github.com/zloether/PassGenerator/actions/workflows/ci.yml/badge.svg)](https://github.com/zloether/PassGenerator/actions/workflows/ci.yml)
-[![Issues](https://img.shields.io/github/issues/zloether/passgenerator.svg)](https://github.com/zloether/passgenerator/issues)
-[![License](https://img.shields.io/github/license/zloether/passgenerator.svg)](https://opensource.org/licenses/MIT)
 
 `PassGenerator` is a secure password generator with a CLI utility. It can generate random complex or phoenetic passwords.
 
@@ -21,9 +17,11 @@
 
 
 ## Installation
+Install the latest version directly from GitHub:
 ```
-python -m pip install passgenerator
+python -m pip install git+https://github.com/zloether/PassGenerator.git
 ```
+> *Note: The `passgenerator` package on PyPI is an outdated release and is not currently maintained there.*
 
 ## Usage
 `PassGenerator` provides the following methods:
