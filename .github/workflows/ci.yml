@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v7
-      - run: uv run --group dev ruff check
+      - run: uv run --locked --group dev ruff check
 
   test:
     runs-on: ${{ matrix.os }}
@@ -33,7 +33,7 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - run: uv run --group dev pytest
+      - run: uv run --locked --group dev pytest
 
   build:
     runs-on: ubuntu-latest
